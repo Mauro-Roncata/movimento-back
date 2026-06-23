@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import com.movimento.jade.back.converters.CryptoConverter;
 
 @Data
 @Entity
