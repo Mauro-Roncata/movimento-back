@@ -22,7 +22,7 @@ public class AssinaturaController {
             assinaturaService.processarNovaAssinatura(assinaturaDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Assinatura registrada com sucesso!");
         } catch (RuntimeException e) {
-            // Captura os erros de duplicidade que lançamos no Service
+            // Captura os erros de duplicidade que do Service
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
