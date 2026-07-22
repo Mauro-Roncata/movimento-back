@@ -8,6 +8,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -39,5 +44,28 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
+    }
+
+    // 5. BLINDAGEM DO CORS (Aceita apenas o meu front)
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        // Dominios com permissão para fazer a req para API
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "https://movimentojade.com.br" // URL de prod
+        ));
+
+        // Métodos HTTP permitidos
+        configuration.setAllowedMethods(List.of("POST", "OPTIONS"));
+
+        // Libera o envio de cabeçalhos (como o Content-Type: application/json)
+        configuration.setAllowedHeaders(List.of("*"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // Aplica essa regra para todas as rotas da API
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }
