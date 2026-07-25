@@ -30,5 +30,9 @@ public class AssinaturaDTO {
 
     @NotBlank(message = "O bairro é obrigatório.")
     private String bairro;
+
+    @NotBlank(message = "A verificação de segurança (Captcha) é obrigatória.")
+    private String captchaToken;
+    
 }
 
