@@ -16,7 +16,7 @@ import java.util.Map;
 public class CaptchaService {
 
     // O Spring Boot vai injetar a chave real que está no application.properties aqui!
-    @Value("${cloudflare.turnstile.secret}")
+    @Value("${TURNSTILE_SITE_KEY}")
     private String secretKey;
 
     private static final String VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
