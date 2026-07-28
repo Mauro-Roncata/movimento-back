@@ -54,7 +54,8 @@ public class SecurityConfig {
         // Dominios com permissão para fazer a req para API
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://movimentojade.com.br" // URL de prod
+                "https://movimentojade.com.br"
+                // URL de prod
         ));
 
         // Métodos HTTP permitidos
