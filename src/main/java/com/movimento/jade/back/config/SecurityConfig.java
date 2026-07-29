@@ -1,5 +1,6 @@
 package com.movimento.jade.back.config;
 
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -54,7 +55,7 @@ public class SecurityConfig {
         // Dominios com permissão para fazer a req para API
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://movimentojade.com.br"
+                "https://movimentojade.vercel.app"
                 // URL de prod
         ));
 
